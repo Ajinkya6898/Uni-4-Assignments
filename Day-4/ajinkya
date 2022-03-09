@@ -1,0 +1,59 @@
+to showcase all the databases
+
+show db
+
+to create db if not present
+
+use users
+
+to drop the current databases
+
+db.dropDatabase()
+
+to show the collection
+
+show collection
+
+to create a collection in db
+
+db.createCollection('users')
+
+to create a document inside the collection
+
+db.users.insert({"firstName": "Ajinkya", "lastName": "Joshi"})
+
+to return the all document
+
+db.users.find({})
+
+to create another document
+
+db.users.insert([{"firstName": "MS", "lastName": "Dhoni"}]
+
+to create multiple document
+
+db.users.insertMany([{"firstName": "Virat ", "lastName": "Kohli"},{"firstName": "Rohit", "lastName": "Sharma"}])
+
+to show the document in presemtable format
+
+db.users.find({}).pretty()
+
+to show the name with particular name
+
+db.users.findOne({"firstName": "Ajinkya"})
+
+to show all the documents with firstName
+
+db.users.find({"firstName": "Ajinkya"}).pretty()
+
+update the document with id and change the name
+
+db.users.update({"\_id": "id"}, {$set: {"lastName": "Shah"}})
+
+remove the document with first name
+
+db.users.remove({"firstName": "ms"})
+
+if we dont have a key but still want to remove the one document
+
+db.users.remove({"firstName": "Rohit"}, 1)
