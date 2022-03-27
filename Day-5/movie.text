@@ -1,0 +1,282 @@
+> show dbs
+admin        0.000GB
+config       0.000GB
+local        0.000GB
+movie        0.000GB
+
+> use movie
+switched to db movie
+
+db.movie.find({"movie_name ":{$eq:"avengers"}},{"movie_name ":1,"production_year ":1,"_id":0})
+{ "movie_name " : "avengers", "production_year " : 2005 }
+
+db.movie.find({"movie_name ":{$ne:"Blood Out"}},{"movie_name ":1,"production_year ":1,"_id":0})
+{ "movie_name " : "Coffin Rock", "production_year " : 1999 }
+{ "movie_name " : "Lucky", "production_year " : 2000 }
+{ "movie_name " : "Trek Nation", "production_year " : 2003 }
+{ "movie_name " : "Fugitive Pieces", "production_year " : 2009 }
+{ "movie_name " : "Pleasure at Her Majesty's", "production_year " : 1998 }
+{ "movie_name " : "Going Clear: Scientology and the Prison of Belief", "production_year " : 2017 }
+{ "movie_name " : "Here be Dragons", "production_year " : 2005 }
+{ "movie_name " : "Cool Runnings", "production_year " : 1996 }
+{ "movie_name " : "Happiest Days of Your Life, The", "production_year " : 1997 }
+{ "movie_name " : "Scar", "production_year " : 1999 }
+{ "movie_name " : "Rules of Attraction, The", "production_year " : 2015 }
+{ "movie_name " : "Trek Nation", "production_year " : 2003 }
+{ "movie_name " : "Vampires", "production_year " : 2012 }
+{ "movie_name " : "Fugitive Pieces", "production_year " : 2009 }
+{ "movie_name " : "The Second Best Exotic Marigold Hotel", "production_year " : 2020 }
+{ "movie_name " : "Here be Dragons", "production_year " : 2005 }
+{ "movie_name " : "Knight and Day", "production_year " : 2013 }
+Type "it" for more
+
+
+> db.movie.find({$or:[{"budget ":{$gt:10000}},{"production_year ":{$gt:2000}}]},{"movie_name ":1,"production_year ":1,"_id":0,"budget ":1}).pretty()
+{
+        "movie_name " : "Vampires",
+        "production_year " : 2012,
+        "budget " : 11110
+}
+{
+        "movie_name " : "My Science Project",
+        "production_year " : 1997,
+        "budget " : 9851
+}
+{ "movie_name " : "Lonesome", "production_year " : 1997, "budget " : 9371 }
+{
+        "movie_name " : "Diary of a Chambermaid",
+        "production_year " : 1992,
+        "budget " : 9078
+}
+{
+        "movie_name " : "Haunted House, A",
+        "production_year " : 1999,
+        "budget " : 19267
+}
+{ "movie_name " : "Scar", "production_year " : 1999, "budget " : 16594 }
+{
+        "movie_name " : "Rules of Attraction, The",
+        "production_year " : 2015,
+        "budget " : 9295
+}
+{
+        "movie_name " : "Beautiful Losers",
+        "production_year " : 2004,
+        "budget " : 10977
+}
+{
+        "movie_name " : "Coffin Rock",
+        "production_year " : 1999,
+        "budget " : 12178
+}
+{
+        "movie_name " : "A Matador's Mistress",
+        "production_year " : 2018,
+        "budget " : 16148
+}
+{
+        "movie_name " : "Namesake, The",
+        "production_year " : 1990,
+        "budget " : 13389
+}
+{
+        "movie_name " : "From the Terrace",
+        "production_year " : 1997,
+        "budget " : 14628
+}
+{
+        "movie_name " : "Lords of Dogtown",
+        "production_year " : 2008,
+        "budget " : 13052
+}
+{
+        "movie_name " : "Speedway Junky",
+        "production_year " : 2013,
+        "budget " : 11230
+}
+{
+        "movie_name " : "Norma Jean & Marilyn",
+        "production_year " : 2015,
+        "budget " : 12057
+}
+{
+        "movie_name " : "10.000 Km (Long Distance)",
+        "production_year " : 2008,
+        "budget " : 19062
+}
+{
+        "movie_name " : "Venus Beauty Institute (Vénus beauté)",
+        "production_year " : 2016,
+        "budget " : 18606
+}
+{ "movie_name " : "Blood Out", "production_year " : 2005, "budget " : 9345 }
+{
+        "movie_name " : "April Fools, The",
+        "production_year " : 2012,
+        "budget " : 16830
+}
+{
+        "movie_name " : "Head Above Water",
+        "production_year " : 2009,
+        "budget " : 9600
+}
+{
+        "movie_name " : "Dream Wife",
+        "production_year " : 2001,
+        "budget " : 17474
+}
+{ "movie_name " : "Altman", "production_year " : 2000, "budget " : 16288 }
+
+{ "movie_name " : "Lucky", "production_year " : 2000, "budget " : 10803 }
+Type "it" for more
+
+
+db.movie.find({$nor:[{"budget ":{$gt:10000}},{"production_year ":{$gt:2000}}]},{"movie_name ":1,"production_year ":1,"_id":0,"budget ":1}).pretty()
+{
+        "movie_name " : "Frozen Ghost, The",
+        "production_year " : 1993,
+        "budget " : 9342
+}
+{
+        "movie_name " : "Expelled: No Intelligence Allowed",
+        "production_year " : 1998,
+        "budget " : 9824
+}
+Type "it" for more
+
+> db.movie.find({"production_year ":{$in:[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010]}},{"movie_name ":1,"production_year ":1,"_id":0}).pretty()
+{ "movie_name " : "District, The (Nyócker!)", "production_year " : 2006 }
+{ "movie_name " : "Lords of Dogtown", "production_year " : 2008 }
+{ "movie_name " : "10.000 Km (Long Distance)", "production_year " : 2008 }
+{ "movie_name " : "Blood Out", "production_year " : 2005 }
+{ "movie_name " : "Head Above Water", "production_year " : 2009 }
+{ "movie_name " : "Dream Wife", "production_year " : 2001 }
+{ "movie_name " : "Altman", "production_year " : 2000 }
+{ "movie_name " : "Beautiful Losers", "production_year " : 2004 }
+{ "movie_name " : "Lucky", "production_year " : 2000 }
+{ "movie_name " : "Trek Nation", "production_year " : 2003 }
+{ "movie_name " : "Fugitive Pieces", "production_year " : 2009 }
+{ "movie_name " : "Here be Dragons", "production_year " : 2005 }
+{ "movie_name " : "Copenhagen", "production_year " : 2010 }
+{
+        "movie_name " : "Declaration of War (La Guerre est Déclarée)",
+        "production_year " : 2008
+}
+{ "movie_name " : "Vibrator", "production_year " : 2009 }
+{ "movie_name " : "Reader, The", "production_year " : 2001 }
+{ "movie_name " : "1492: Conquest of Paradise", "production_year " : 2003 }
+{ "movie_name " : "V. I. Warshawski", "production_year " : 2009 }
+{ "movie_name " : "800 Bullets (800 Balas)", "production_year " : 2007 }
+{ "movie_name " : "The Well", "production_year " : 2002 }
+Type "it" for more
+
+db.movie.find({}).sort({"production_year ":-1,"movie_name ":1})
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0f16"), "id" : 334, "movie_name " : "Airplane II: The Sequel", "movie_genre " : "Comedy", "production_year " : 2021, "budget " : 14189 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0eda"), "id" : 274, "movie_name " : "Anne of the Thousand Days", "movie_genre " : "Drama", "production_year " : 2021, "budget " : 9725 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0f39"), "id" : 369, "movie_name " : "Being Cyrus", "movie_genre " : "Comedy|Drama|Thriller", "production_year " : 2021, "budget " : 15414 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0e9a"), "id" : 210, "movie_name " : "Crazy Heart", "movie_genre " : "Drama|Romance", "production_year " : 2021, "budget " : 15837 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0e31"), "id" : 105, "movie_name " : "Dark Prince: The True Story of Dracula", "movie_genre " : "Drama|Horror|Thriller", "production_year " : 2021, "budget " : 16998 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0e04"), "id" : 60, "movie_name " : "Double Life of Veronique, The (Double Vie de Véronique, La)", "movie_genre " : "Drama|Fantasy|Romance", "production_year " : 2021, "budget " : 14570 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0e61"), "id" : 153, "movie_name " : "Kautokeino Rebellion, The (Kautokeino-opprøret)", "movie_genre " : "Drama", "production_year " : 2021, "budget " : 18461 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0e20"), "id" : 88, "movie_name " : "Kummeli V", "movie_genre " : "Comedy", "production_year " : 2021, "budget " : 14765 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0eb2"), "id" : 234, "movie_name " : "Legend of Suram Fortress, The (Ambavi Suramis tsikhitsa) ", "movie_genre " : "Drama", "production_year " : 2021, "budget " : 13487 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0e16"), "id" : 78, "movie_name " : "Luke and Lucy: The Texas Rangers (Suske en Wiske: De Texas rakkers)", "movie_genre " : "Adventure|Animation|Comedy|Western", "production_year " : 2021, "budget " : 16584 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0f29"), "id" : 353, "movie_name " : "Night of the Hunter, The", "movie_genre " : "Drama|Film-Noir|Thriller", "production_year " : 2021, "budget " : 19004 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0e21"), "id" : 89, "movie_name " : "Predictions of Fire (Prerokbe Ognja)", "movie_genre " : "Documentary", "production_year " : 2021, "budget " : 17143 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0f71"), "id" : 425, "movie_name " : "Sweetwater", "movie_genre " : "Thriller|Western", "production_year " : 2021, "budget " : 13248 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0f46"), "id" : 382, "movie_name " : "Two Tars", "movie_genre " : "Comedy", "production_year " : 2021, "budget " : 16671 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0f85"), "id" : 445, "movie_name " : "Unrest", "movie_genre " : "Horror|Thriller", "production_year " : 2021, "budget " : 13822 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0e9d"), "id" : 213, "movie_name " : "Vampire Apocalypse", "movie_genre " : "Comedy|Horror", "production_year " : 2021, "budget " : 18118 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0edd"), "id" : 277, "movie_name " : "Whole Ten Yards, The", "movie_genre " : "Action|Comedy|Crime", "production_year " : 2021, "budget " : 13452 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0ef2"), "id" : 298, "movie_name " : "Conspiracy, The", "movie_genre " : "Horror|Thriller", "production_year " : 2020, "budget " : 10373 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0f07"), "id" : 319, "movie_name " : "Dear Frankie", "movie_genre " : "Drama|Romance", "production_year " : 2020, "budget " : 16540 }
+{ "_id" : ObjectId("62278cd6cdd57b5c4dbc0f34"), "id" : 364, "movie_name " : "Deep Rising", "movie_genre " : "Action|Horror|Sci-Fi", "production_year " : 2020, "budget " : 19845 }
+Type "it" for more
+
+db.movie.find({},{"movie_name ":1,"production_year ":1,"_id":0}).sort({"production_year ":-1,"movie_name ":1})
+{ "movie_name " : "Airplane II: The Sequel", "production_year " : 2021 }
+{ "movie_name " : "Anne of the Thousand Days", "production_year " : 2021 }
+{ "movie_name " : "Being Cyrus", "production_year " : 2021 }
+{ "movie_name " : "Crazy Heart", "production_year " : 2021 }
+{ "movie_name " : "Dark Prince: The True Story of Dracula", "production_year " : 2021 }
+{ "movie_name " : "Double Life of Veronique, The (Double Vie de Véronique, La)", "production_year " : 2021 }
+{ "movie_name " : "Kautokeino Rebellion, The (Kautokeino-opprøret)", "production_year " : 2021 }
+{ "movie_name " : "Kummeli V", "production_year " : 2021 }
+{ "movie_name " : "Legend of Suram Fortress, The (Ambavi Suramis tsikhitsa) ", "production_year " : 2021 }
+{ "movie_name " : "Luke and Lucy: The Texas Rangers (Suske en Wiske: De Texas rakkers)", "production_year " : 2021 }
+{ "movie_name " : "Night of the Hunter, The", "production_year " : 2021 }
+{ "movie_name " : "Predictions of Fire (Prerokbe Ognja)", "production_year " : 2021 }
+{ "movie_name " : "Sweetwater", "production_year " : 2021 }
+{ "movie_name " : "Two Tars", "production_year " : 2021 }
+{ "movie_name " : "Unrest", "production_year " : 2021 }
+{ "movie_name " : "Vampire Apocalypse", "production_year " : 2021 }
+{ "movie_name " : "Whole Ten Yards, The", "production_year " : 2021 }
+{ "movie_name " : "Conspiracy, The", "production_year " : 2020 }
+{ "movie_name " : "Dear Frankie", "production_year " : 2020 }
+{ "movie_name " : "Deep Rising", "production_year " : 2020 }
+Type "it" for more
+
+
+db.movie.find({},{"movie_name ":1,"production_year ":1,"_id":0}).skip(10).limit(5).pretty()
+{ "production_year " : 2012 }
+{ "production_year " : 1999 }
+{ "production_year " : 1999 }
+{ "production_year " : 2015 }
+{ "production_year " : 2009 }
+> db.movie.find({},{"movie_name ":1,"production_year ":1,"_id":0}).skip(10).limit(5).pretty()
+{ "movie_name " : "April Fools, The", "production_year " : 2012 }
+{ "movie_name " : "Haunted House, A", "production_year " : 1999 }
+{ "movie_name " : "Scar", "production_year " : 1999 }
+{ "movie_name " : "Rules of Attraction, The", "production_year " : 2015 }
+{ "movie_name " : "Head Above Water", "production_year " : 2009 }
+> db.movie.find({},{"movie_name ":1,"production_year ":1,"_id":0,"id ":1}).skip(10).limit(5).pretty()
+{ "movie_name " : "April Fools, The", "production_year " : 2012 }
+{ "movie_name " : "Haunted House, A", "production_year " : 1999 }
+{ "movie_name " : "Scar", "production_year " : 1999 }
+{ "movie_name " : "Rules of Attraction, The", "production_year " : 2015 }
+{ "movie_name " : "Head Above Water", "production_year " : 2009 }
+
+
+db.movie.find({},{"movie_name ":1,"production_year ":1,"_id":0,"id":1}).skip(10).limit(5)
+{ "id" : 11, "movie_name " : "April Fools, The", "production_year " : 2012 }
+{ "id" : 12, "movie_name " : "Haunted House, A", "production_year " : 1999 }
+{ "id" : 13, "movie_name " : "Scar", "production_year " : 1999 }
+{ "id" : 14, "movie_name " : "Rules of Attraction, The", "production_year " : 2015 }
+{ "id" : 15, "movie_name " : "Head Above Water", "production_year " : 2009 }
+
+db.movie.find({},{"movie_name ":1,"production_year ":1,"_id":0}).sort({"production_year ":-1,"movie_name ":1}).skip(10).limit(5)
+{ "movie_name " : "Night of the Hunter, The", "production_year " : 2021 }
+{ "movie_name " : "Predictions of Fire (Prerokbe Ognja)", "production_year " : 2021 }
+{ "movie_name " : "Sweetwater", "production_year " : 2021 }
+{ "movie_name " : "Two Tars", "production_year " : 2021 }
+{ "movie_name " : "Unrest", "production_year " : 2021 }
+
+
+db.movie.find({},{"movie_name ":1,"production_year ":1,"_id":0,"id":1}).sort({"production_year ":-1,"movie_name ":1}).skip(10).limit(5)
+{ "id" : 353, "movie_name " : "Night of the Hunter, The", "production_year " : 2021 }
+{ "id" : 89, "movie_name " : "Predictions of Fire (Prerokbe Ognja)", "production_year " : 2021 }
+{ "id" : 425, "movie_name " : "Sweetwater", "production_year " : 2021 }
+{ "id" : 382, "movie_name " : "Two Tars", "production_year " : 2021 }
+{ "id" : 445, "movie_name " : "Unrest", "production_year " : 2021 }
+
+
+db.movie.find({},{"movie_name ":1,"production_year ":1,"_id":0}).sort({"production_year ":-1,"movie_name ":1}).skip(10).limit(5)
+{ "movie_name " : "Night of the Hunter, The", "production_year " : 2021 }
+{ "movie_name " : "Predictions of Fire (Prerokbe Ognja)", "production_year " : 2021 }
+{ "movie_name " : "Sweetwater", "production_year " : 2021 }
+{ "movie_name " : "Two Tars", "production_year " : 2021 }
+{ "movie_name " : "Unrest", "production_year " : 2021 }
+
+db.movie.find({},{"movie_name ":1,"production_year ":1,"_id":0}).sort({"production_year ":-1,"movie_name ":1}).limit(1).remove({"movie_genre ":1})
+uncaught exception: TypeError: db.movie.find(...).sort(...).limit(...).remove is not a function :
+
+db.movie.find({},{"movie_name ":1,"production_year ":1,"_id":0}).sort({"production_year ":-1,"movie_name ":1}).limit(1).remove({"movie_genre "})
+uncaught exception: SyntaxError: missing : after property id :
+
+db.movie.find({},{"movie_name ":1,"production_year ":1,"_id":0}).sort({"production_year ":-1,"movie_name ":1}).limit(1).update({$unset:{"movie_genre ":1}})
+uncaught exception: TypeError: db.movie.find(...).sort(...).limit(...).update is not a function :
+
+db.movie.find({},{"movie_name ":1,"production_year ":1,"_id":0}).sort({"production_year ":-1,"movie_name ":1}).limit(1).update({$unset:{"movie_genre ":1}},false,true)
+uncaught exception: TypeError: db.movie.find(...).sort(...).limit(...).update is not a function :
+
+ 

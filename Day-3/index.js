@@ -1,20 +1,22 @@
-const express = require('express');
+// const express = require('express');
 
-const app = express();
+// const app = express();
 
-app.use(logger)
+// app.use(logger)
 
-app.get('/books',(req,res) =>{
-     res.send('Fetching all books');
-});
+// app.get('/books',(req,res) =>{
+//      res.send('Fetching all books');
+// });
 
-app.get('/book/:name',(req,res)=>{
-     res.send({book1:"Game Of Thrones"})
-});
+// app.get('/book/:name',(req,res)=>{
+//      res.send({book1:"Game Of Thrones"})
+// });
 
-function logger(req,res,next){
-     console.log('log');
-     next();
-}
+// function logger(req,res,next){
+//      console.log('log');
+//      next();
+// }
 
-app.listen(2000);
+// app.listen(2000);
+
+
